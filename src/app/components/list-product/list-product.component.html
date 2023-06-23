@@ -1,0 +1,56 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="title-list">LIST OF PRODUCTS</span>
+          <button
+            class="btn btn-success float-end"
+            routerLink="/create-product"
+          >
+            New
+          </button>
+          <hr />
+          <table
+            *ngIf="listProduct.length > 0"
+            class="table table-striped mt-4"
+          >
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Category</th>
+                <th scope="col">Mark</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let products of listProduct">
+                <td>{{ products.product }}</td>
+                <td>{{ products.category }}</td>
+                <td>{{ products.mark }}</td>
+                <td>{{ products.price }}</td>
+                <td>
+                  <i
+                    routerLink="/edit-product/{{ products._id }}"
+                    class="fas fa-edit text-primary"
+                  ></i>
+                  <i
+                    (click)="deleteProduct(products._id)"
+                    class="fa-solid fa-trash-can text-danger"
+                  ></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h5
+            style="text-align: start; margin-top: 10px"
+            *ngIf="listProduct.length == 0"
+          >
+            There are no products to display.
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

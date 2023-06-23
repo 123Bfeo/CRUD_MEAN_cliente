@@ -1,0 +1,95 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="title-list">{{ titulo | uppercase }}</span>
+          <form
+            class="mb-3"
+            [formGroup]="productForm"
+            (ngSubmit)="addProduct()"
+          >
+            <div class="mb-3">
+              <input
+                formControlName="product"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder=" Name of product"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  productForm.get('product')?.invalid &&
+                  productForm.get('product')?.dirty
+                "
+              >
+                <span>the product name is <strong>required</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input
+                formControlName="category"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Category for the product"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  productForm.get('category')?.invalid &&
+                  productForm.get('category')?.dirty
+                "
+              >
+                <span>The product category <strong>required</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input
+                formControlName="mark"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Mark for the product"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  productForm.get('mark')?.invalid &&
+                  productForm.get('mark')?.dirty
+                "
+              >
+                <span>The product marck is <strong>required</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <input
+                formControlName="price"
+                type="number"
+                class="form-control form-control-lg"
+                placeholder="Price for the product"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  productForm.get('price')?.invalid &&
+                  productForm.get('price')?.dirty
+                "
+              >
+                <span>The product price is <strong>required</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <button class="btn btn-secondary" routerLink="/">Return</button>
+              <button
+                type="submit"
+                class="btn btn-success separacion"
+                [disabled]="productForm.invalid"
+              >
+                Accept
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
